@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.Toolkit;
+import java.io.IOException;
 import java.awt.Color;
 
 
@@ -46,10 +47,11 @@ public class Main extends JFrame {
         add(scrollPane);
     }
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 		Scanner scan = new Scanner(System.in);
-		MetodoBissecao mb = new MetodoBissecao();
-		MetodoFalsaPosicao fp = new MetodoFalsaPosicao();
+		Menu menu = new Menu();
+		//MetodoBissecao mb = new MetodoBissecao();
+		//MetodoFalsaPosicao fp = new MetodoFalsaPosicao();
 		
 		//mb.bissecao();
 		
@@ -59,7 +61,33 @@ public class Main extends JFrame {
 			
 		//new Main(Constantes.METODO_BISSECAO, Constantes.COLUNAS_BISSECAO, mb.retornarDados()).setVisible(true);
 		
-		
+		System.out.println(menu.retornarEscolha());
+		/*switch(Menu.retornarEscolha()) {
+		case 1:
+			MetodoBissecao mb = new MetodoBissecao();
+			mb.bissecao();
+			new Main(Constantes.METODO_BISSECAO, Constantes.COLUNAS_BISSECAO, mb.retornarDados()).setVisible(true);
+		break;
+		case 2:
+			MetodoFalsaPosicao fp = new MetodoFalsaPosicao();
+			fp.falsaPosicao();
+			new Main(Constantes.METODO_FALSA_POSICAO, Constantes.COLUNAS_FALSA_POSICAO, fp.retornarDados()).setVisible(true);
+		break;
+		case 3:
+			//não concluido
+		break;
+		case 4:
+			//não concluido
+		break;
+		case 0:
+			System.exit(0);
+		break;
+		default:
+			//provalvelmente não vai acontecer...
+		break;
+			
+		}
+		*/
 		
 		scan.close();
 	}

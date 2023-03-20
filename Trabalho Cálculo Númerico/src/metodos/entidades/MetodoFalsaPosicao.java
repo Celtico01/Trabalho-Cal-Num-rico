@@ -1,19 +1,18 @@
 package metodos.entidades;
 
-public class MetodoFalsaPosicao extends Metodo{
-	String[][] dados = new String[5][9];
-	int linha;
-	int coluna;
-	
+public class MetodoFalsaPosicao extends MetodoEncontrarRaiz{
+	private String[][] dados = new String[6][9];
+	private int linha;
+	private int coluna;
 
 	protected double funcao(double x) { //definindo a funcao do metodo
 		return (Math.pow(x, 2)) - (Math.pow(Math.E, x));
 	}
 	
-	protected void guardaDados(double dado, int linha, int coluna){
+	private void guardaDados(double dado, int linha, int coluna){
 		dados[linha][coluna] = String.valueOf(dado);
 	}
-	protected void guardaDados(int dado, int linha, int coluna){
+	private void guardaDados(int dado, int linha, int coluna){
 		dados[linha][coluna] = String.valueOf(dado);
 	}
 	
@@ -25,56 +24,47 @@ public class MetodoFalsaPosicao extends Metodo{
 		setPrecisao(0.0001);
 		setInterA(-1);
 		setInterB(0);
+		setRaiz(getInterA());
 		setInteracoes(100);
-		int contador = 1;
-		double temp;
-		double erro = 1;
+		setContador(1);
+		setErro(1);
 		
-		if(funcao(getInterA()) * funcao(getInterB()) < 0 ) {
-			linha = 0;
-			setRaiz(getInterA());
-
-			while(erro > getPrecisao() && getInteracoes() > contador) {
-				coluna = 0;
+		this.linha = 0;
+		while(getErro() > getPrecisao() && getInteracoes() > getContador()) {
+			this.coluna = 0;
+			guardaDados(getContador(), linha, coluna);
+			this.coluna++;
+			guardaDados(getInterA(), linha, coluna);
+			this.coluna++;
+			guardaDados(getInterB(), linha, coluna);
+			this.coluna++;
+			guardaDados(funcao(getInterA()), linha, coluna);
+			this.coluna++;
+			guardaDados(funcao(getInterB()), linha, coluna);
+			this.coluna++;
+			guardaDados(getRaiz(), linha, coluna);
+			this.coluna++;
+			guardaDados(funcao(getRaiz()), linha, coluna);
+			this.coluna++;
+			guardaDados(funcao(getInterA()) * funcao(getRaiz()), linha, coluna);
+			this.coluna++;
+			guardaDados(getErro(), linha, coluna);
+			this.coluna++;
+			this.linha++;
 				
-				guardaDados(contador, linha, coluna);
-				this.coluna++;
-				guardaDados(getInterA(), linha, coluna);
-				this.coluna++;
-				guardaDados(getInterB(), linha, coluna);
-				this.coluna++;
-				guardaDados(funcao(getInterA()), linha, coluna);
-				this.coluna++;
-				guardaDados(funcao(getInterB()), linha, coluna);
-				this.coluna++;
-				guardaDados(getRaiz(), linha, coluna);
-				this.coluna++;
-				guardaDados(funcao(getRaiz()), linha, coluna);
-				this.coluna++;
-				guardaDados(funcao(getInterA()) * funcao(getRaiz()), linha, coluna);
-				this.coluna++;
-				guardaDados(erro, linha, coluna);
-				this.coluna++;
-				linha++;
+			setTemp(getRaiz());
+			setRaiz((getInterA() * funcao(getInterB()) - getInterB() * funcao(getInterA())) / (funcao(getInterB()) - funcao(getInterA())));
+			
+			setErro(Math.abs((getRaiz() - getTemp()) / getRaiz()));
 				
-				temp = getRaiz();
-				setRaiz((getInterA() * funcao(getInterB()) - getInterB() * funcao(getInterA())) / (funcao(getInterB()) - funcao(getInterA())));
-				
-				erro = Math.abs((getRaiz() - temp) / getRaiz());
-				
-				if(funcao(getInterA()) * funcao(getInterB()) < 0) {
-					setInterA(getRaiz());
-				}
-				else {
-					setInterB(getRaiz());
-				}
-				contador++;
+			if(funcao(getInterA()) * funcao(getRaiz()) < 0) {
+				setInterB(getRaiz());
 			}
-			return getRaiz();	
+			else {
+				setInterA(getRaiz());
+			}	
+			setContador(getContador() + 1);
 		}
-		else {
-			System.out.println("A funcão não possui raiz no intervalo dado");
-			return -404; //cod erro
-		}	
+		return getRaiz();	
 	}
 }

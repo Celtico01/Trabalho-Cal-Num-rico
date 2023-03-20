@@ -7,4 +7,6 @@ public final class Constantes {
 	public static final String METODO_NEWTON = "Método de Newton";
 	public static final String[] COLUNAS_BISSECAO = {"k", "a", "b", "f(a)", "f(b)", "x", "f(x)", "f(a)*f(b)", "ERRO"};
 	public static final String[] COLUNAS_FALSA_POSICAO = {"k", "a" , "b", "f(a)", "f(b)", "x", "f(x)", "f(a)*f(b)", "ERRO"};
+	public static final String[] COLUNAS_PONTO_FIXO = {"k", "a" , "b", "f(a)", "f(b)", "x", "f(x)", "f(a)*f(b)", "ERRO"};
+	public static final String[] COLUNAS_NEWTON = {"k", "a" , "b", "f(a)", "f(b)", "x", "f(x)", "f(a)*f(b)", "ERRO"};
 }

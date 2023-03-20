@@ -1,12 +1,38 @@
 package metodos.entidades;
 
-public abstract class Metodo {
+public abstract class MetodoEncontrarRaiz {
 	private double interA; // intervalo a
 	private double interB; // intervalo b
-	private double precisao; // erro minimo
+	private double precisao; // precisao do erro
 	private long interacoes; // numero de interacoes
 	private double raiz; // raiz
-	
+	private int contador;
+	private double temp; //raiz temporaria
+	private double erro;
+
+	public int getContador() {
+		return contador;
+	}
+
+	public void setContador(int contador) {
+		this.contador = contador;
+	}
+
+	public double getTemp() {
+		return temp;
+	}
+
+	public void setTemp(double temp) {
+		this.temp = temp;
+	}
+
+	public double getErro() {
+		return erro;
+	}
+
+	public void setErro(double erro) {
+		this.erro = erro;
+	}
 
 	public double getPrecisao() {
 		return precisao;

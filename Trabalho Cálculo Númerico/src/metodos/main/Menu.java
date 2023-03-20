@@ -1,28 +1,20 @@
 package metodos.main;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public final class Menu {
-	public static int retornarEscolha() throws IOException {
+	public static int retornarEscolha() {
 		int escolha = -1;
+		Scanner scan = new Scanner(System.in);
 		
-		while(escolha != 0) {
-			Scanner scan = new Scanner(System.in);
-			if(escolha >= 0 && escolha <= 4) {
-				estruturaMenu();
-				escolha = scan.nextInt();
-				Runtime.getRuntime().exec("cls");
-				scan.close();
-				return escolha;
-			}
-			else {
-				System.out.println("Tente Novamente!");
-			}
-		}	
-		return 0;
+		estruturaMenu();
+		escolha = scan.nextInt();
+		if((escolha >= 0) && (escolha <= 4))
+			scan.close();
+		
+		return escolha;
 	}
-	public static void estruturaMenu() {
+	private static void estruturaMenu() {
 		System.out.println("[1]Método da Bisseção");
 		System.out.println("[2]Método da Falsa Posição");
 		System.out.println("[3]Método do Ponto Fixo");

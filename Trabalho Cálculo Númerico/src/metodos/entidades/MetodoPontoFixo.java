@@ -1,12 +1,16 @@
 package metodos.entidades;
 
-public final class MetodoBissecao extends MetodoEncontrarRaiz{
-	private String[][] dados = new String[14][9];
+public final class MetodoPontoFixo extends MetodoEncontrarRaiz{
+	private String[][] dados = new String[10][9];
 	private int linha;
 	private int coluna;
 
 	protected double funcao(double x) { //definindo a funcao do metodo
 		return (Math.pow(x, 2)) - (Math.pow(Math.E, x));
+	}
+	
+	protected double funcaoG(double x) {
+		return -Math.sqrt(Math.pow(Math.E, x));
 	}
 	
 	private void guardaDados(double dado, int linha, int coluna){
@@ -19,8 +23,7 @@ public final class MetodoBissecao extends MetodoEncontrarRaiz{
 	public String[][] retornarDados(){ // retornando os dados coletados para gerar a tabela
 		return dados;
 	}
-	
-	public double bissecao() {		
+	public double pontoFixo() {
 		setPrecisao(0.0001);
 		setInterA(-1);
 		setInterB(0);
@@ -29,9 +32,9 @@ public final class MetodoBissecao extends MetodoEncontrarRaiz{
 		setContador(1);
 		setErro(1);
 		
-		linha = 0;
-		while(getErro() > getPrecisao() && getInteracoes() > getErro()) {
-			coluna = 0;
+		this.linha = 0;
+		while(getErro() > getPrecisao() && getInteracoes() > getContador()) {
+			this.coluna = 0;
 			guardaDados(getContador(), linha, coluna);
 			this.coluna++;
 			guardaDados(getInterA(), linha, coluna);
@@ -49,22 +52,23 @@ public final class MetodoBissecao extends MetodoEncontrarRaiz{
 			guardaDados(funcao(getInterA()) * funcao(getRaiz()), linha, coluna);
 			this.coluna++;
 			guardaDados(getErro(), linha, coluna);
-			this.coluna++;		
+			this.coluna++;
 			this.linha++;
 				
 			setTemp(getRaiz());
-			setRaiz((getInterA() + getInterB()) / 2);	
-				
+			setRaiz(funcaoG(getTemp()));
+			
 			setErro(Math.abs((getRaiz() - getTemp()) / getRaiz()));
 				
-			if((funcao(getInterA()) * funcao(getRaiz())) < 0) {
+			if(funcao(getInterA()) * funcao(getRaiz()) < 0) {
 				setInterB(getRaiz());
 			}
 			else {
-				setInterA(getRaiz());		
-			}
+				setInterA(getRaiz());
+			}	
 			setContador(getContador() + 1);
 		}
-		return getRaiz();
+		return getRaiz();	
 	}
+	
 }

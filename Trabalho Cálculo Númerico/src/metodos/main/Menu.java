@@ -1,5 +1,6 @@
 package metodos.main;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public final class Menu {
@@ -8,10 +9,22 @@ public final class Menu {
 		Scanner scan = new Scanner(System.in);
 		
 		estruturaMenu();
-		escolha = scan.nextInt();
-		if((escolha >= 0) && (escolha <= 4))
-			scan.close();
 		
+		while(escolha < 0 || escolha > 4) {
+			try{
+				System.out.print("Escolha: "); 
+				escolha = scan.nextInt();
+				if(escolha < 0 || escolha >4)
+					System.out.println("Opção invalida! Escolha um número inteiro entre 0 e 4.");
+			}
+			catch(InputMismatchException e){
+				System.out.println("Opção invalida! Escolha um número inteiro entre 0 e 4.");
+			}
+			
+		}
+		
+		scan.close();
+	
 		return escolha;
 	}
 	private static void estruturaMenu() {

@@ -1,0 +1,4 @@
+Método da Bisseção: 14
+Método da Falsa Posição: 6
+Método do Ponto Fixo: 9
+Método de Newton: 4

@@ -1,0 +1,1 @@
+Intervalo da raiz é entre -1 e 0.

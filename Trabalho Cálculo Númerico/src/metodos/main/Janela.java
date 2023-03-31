@@ -29,7 +29,7 @@ public class Janela extends JFrame {
         setTitle(nomeJanela);//titulo
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//setando a ação padrão de fechamento do Formulário, neste caso  irá fechar o programa
         setExtendedState(JFrame.MAXIMIZED_BOTH); //setando o programa para começar em tela cheia
-        setAlwaysOnTop(true); // sobrepor outras janelas
+        //setAlwaysOnTop(true); // sobrepor outras janelas
         
         getContentPane().setBackground(Color.BLACK); //cor de fundo da aba
         

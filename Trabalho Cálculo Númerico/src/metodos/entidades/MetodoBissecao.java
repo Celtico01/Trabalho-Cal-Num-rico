@@ -1,7 +1,7 @@
 package metodos.entidades;
 
 public final class MetodoBissecao extends MetodoEncontrarRaiz{
-	private String[][] dados = new String[14][9];
+	private String[][] dados = new String[20][9];
 	private int linha;
 	private int coluna;
 
@@ -55,7 +55,7 @@ public final class MetodoBissecao extends MetodoEncontrarRaiz{
 			setTemp(getRaiz());
 			setRaiz((getInterA() + getInterB()) / 2);	
 				
-			setErro(Math.abs((getRaiz() - getTemp()) / getRaiz()));
+			setErro(Math.abs((getRaiz() - getTemp())));
 				
 			if((funcao(getInterA()) * funcao(getRaiz())) < 0) {
 				setInterB(getRaiz());

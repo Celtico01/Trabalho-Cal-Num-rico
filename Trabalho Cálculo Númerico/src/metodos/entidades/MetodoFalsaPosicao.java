@@ -1,7 +1,7 @@
 package metodos.entidades;
 
 public class MetodoFalsaPosicao extends MetodoEncontrarRaiz{
-	private String[][] dados = new String[6][9];
+	private String[][] dados = new String[20][9];
 	private int linha;
 	private int coluna;
 
@@ -55,7 +55,7 @@ public class MetodoFalsaPosicao extends MetodoEncontrarRaiz{
 			setTemp(getRaiz());
 			setRaiz((getInterA() * funcao(getInterB()) - getInterB() * funcao(getInterA())) / (funcao(getInterB()) - funcao(getInterA())));
 			
-			setErro(Math.abs((getRaiz() - getTemp()) / getRaiz()));
+			setErro(Math.abs((getRaiz() - getTemp())));
 				
 			if(funcao(getInterA()) * funcao(getRaiz()) < 0) {
 				setInterB(getRaiz());

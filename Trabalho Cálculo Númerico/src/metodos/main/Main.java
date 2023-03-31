@@ -28,7 +28,9 @@ public class Main extends Janela{
 			new Janela(Constantes.METODO_PONTO_FIXO, Constantes.COLUNAS_PONTO_FIXO, pf.retornarDados()).setVisible(true);
 		break;
 		case 4:
-			//não concluido
+			MetodoNewton mn = new MetodoNewton();
+			mn.mtdNewton();
+			new Janela(Constantes.METODO_NEWTON, Constantes.COLUNAS_NEWTON, mn.retornarDados()).setVisible(true);
 		break;
 		case 0:
 			System.out.println("Fechando programa...");

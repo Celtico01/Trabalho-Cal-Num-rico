@@ -3,6 +3,8 @@ package metodos.main;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import metodos.entidades.MetodoEncontrarRaiz;
+
 public final class Menu {
 	public static int retornarEscolha() {
 		int escolha = -1;
@@ -28,10 +30,13 @@ public final class Menu {
 		return escolha;
 	}
 	private static void estruturaMenu() {
+		System.out.println("-------------------------------");
+		System.out.println("========== " + MetodoEncontrarRaiz.funcaoUtilizada() +" ==========");
 		System.out.println("[1]Método da Bisseção");
 		System.out.println("[2]Método da Falsa Posição");
 		System.out.println("[3]Método do Ponto Fixo");
 		System.out.println("[4]Método de Newton");
 		System.out.println("[0]Fechar Programa");
+		System.out.println("-------------------------------");
 	}
 }

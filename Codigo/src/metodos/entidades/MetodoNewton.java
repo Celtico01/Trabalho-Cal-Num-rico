@@ -37,6 +37,22 @@ public class MetodoNewton extends MetodoEncontrarRaiz{
 		this.linha = 0;
 		while(getErro() > getPrecisao() && getInteracoes() > getContador()) {
 			this.coluna = 0;
+				
+			if(getContador() > 1) {
+				
+				setTemp(getRaiz());
+				setRaiz(getRaiz() - funcao(getRaiz()) / derivada(getRaiz()));
+				
+				setErro(Math.abs((getRaiz() - getTemp())));
+					
+				if(funcao(getInterA()) * funcao(getRaiz()) < 0) {
+					setInterB(getRaiz());
+				}
+				else {
+					setInterA(getRaiz());
+				}	
+			}
+			
 			guardaDados(getContador(), linha, coluna);
 			this.coluna++;
 			guardaDados(getInterA(), linha, coluna);
@@ -58,22 +74,9 @@ public class MetodoNewton extends MetodoEncontrarRaiz{
 			guardaDados(getErro(), linha, coluna);
 			this.coluna++;
 			this.linha++;
-				
-			setTemp(getRaiz());
-			setRaiz(getRaiz() - funcao(getRaiz()) / derivada(getRaiz()));
 			
-			setErro(Math.abs((getRaiz() - getTemp())));
-				
-			if(funcao(getInterA()) * funcao(getRaiz()) < 0) {
-				setInterB(getRaiz());
-			}
-			else {
-				setInterA(getRaiz());
-			}	
 			setContador(getContador() + 1);
-		}
-		
-		
+		}	
 		return getRaiz();
 	}
 }

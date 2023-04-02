@@ -75,4 +75,8 @@ public abstract class MetodoEncontrarRaiz {
 	}
 
 	protected abstract double funcao(double x);
+	
+	public static String funcaoUtilizada() {
+		return "x^2 - e^2";
+	}
 }

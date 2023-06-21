@@ -4,7 +4,5 @@
 ### Método do Ponto Fixo: :heavy_check_mark:
 ### Método de Newton: :heavy_check_mark:
 
-## Deprecated
+## Deprecated / Descontinuado
 ![No Maintenance Intended](http://unmaintained.tech/badge.svg)
-## Descontinuado
-![Sem Manutenção](http://unmaintained.tech/badge.svg)
